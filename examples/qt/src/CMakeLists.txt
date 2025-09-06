@@ -8,7 +8,7 @@ FetchContent_MakeAvailable(
     QT
 )   
 
-set(TARGET ImGuiExample)
+set(TARGET QtExample)
 add_executable(${TARGET} 
     ${CMAKE_SOURCE_DIR}/examples/${EXAMPLE_DIR}/src/main.cpp
 )

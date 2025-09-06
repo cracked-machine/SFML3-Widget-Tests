@@ -46,8 +46,7 @@
             "options": [
                 "imgui",
                 "qt",
-                "wxwidgets",
-                "gtk"
+                "wxwidgets"
             ],
             "default": "Debug"
         }

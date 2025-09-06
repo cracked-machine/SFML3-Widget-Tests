@@ -3,6 +3,16 @@ FROM debian:trixie
 ARG USER=user
 ENV DEBIAN_FRONTEND=noninteractive
 
+# debian trixie specific locale setup
+# see https://stackoverflow.com/questions/28405902/how-to-set-the-locale-inside-a-ubuntu-docker-container
+RUN apt update && apt install -y locales && \
+    echo "en_GB.UTF-8 UTF-8" > /etc/locale.gen && \
+    locale-gen && \
+    dpkg-reconfigure --frontend=noninteractive locales && \
+    export LANG=en_GB.UTF-8 && export LC_ALL=en_GB.UTF-8
+ENV LANG=en_GB.UTF-8
+ENV LC_ALL=en_GB.UTF-8
+
 # general stuff plus mingw cross compiler
 RUN apt update -y && apt install -y \
     clangd \
@@ -18,7 +28,8 @@ RUN apt update -y && apt install -y \
     make \
     pkg-config \
     cmake \
-    ninja-build 
+    ninja-build \
+    gettext
 
 # SFML3 reqs
 RUN apt update -y && apt install -y \
@@ -33,7 +44,7 @@ RUN apt update -y && apt install -y \
     libegl1-mesa-dev \
     libfreetype-dev
 
-RUN locale-gen en_GB.UTF-8 && update-locale
+
 
 RUN useradd -m $USER && echo "$USER:$USER" | chpasswd && adduser $USER sudo
 RUN echo "user            ALL = (ALL) NOPASSWD: ALL" >> /etc/sudoers
