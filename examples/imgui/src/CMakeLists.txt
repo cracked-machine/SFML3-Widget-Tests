@@ -19,7 +19,7 @@ FetchContent_MakeAvailable(
 
 set(TARGET ImGuiExample)
 add_executable(${TARGET} 
-    ${CMAKE_SOURCE_DIR}/examples/imgui/src/main.cpp
+    ${CMAKE_SOURCE_DIR}/examples/${EXAMPLE_DIR}/src/main.cpp
 )
 
 target_compile_features(${TARGET} PRIVATE cxx_std_20)
@@ -32,8 +32,8 @@ target_link_libraries(${TARGET} PRIVATE
     ImGui-SFML::ImGui-SFML
 )
 target_include_directories(${TARGET} SYSTEM PRIVATE 
-    ${CMAKE_SOURCE_DIR}/examples/imgui/inc
-    ${CMAKE_SOURCE_DIR}/examples/imgui/inc/Logging
+    ${CMAKE_SOURCE_DIR}/examples/${EXAMPLE_DIR}/inc
+    ${CMAKE_SOURCE_DIR}/examples/${EXAMPLE_DIR}/inc/Logging
     ${FETCHCONTENT_BASE_DIR}/imgui-src
     /usr/x86_64-w64-mingw32/include/GL/
 )

@@ -1,4 +1,5 @@
 #!/bin/bash
+
 PROJECT=$1
 BUILD=$2
 cmake -S . -B build/${PROJECT} -G Ninja \
@@ -8,5 +9,8 @@ cmake -S . -B build/${PROJECT} -G Ninja \
     -DEXAMPLE_DIR=$PROJECT \
 
 cmake --build build/${PROJECT} --parallel
+
+export COMPILE_COMMANDS_PATH=build/${PROJECT}
+envsubst < scripts/settings.json.template > .vscode/settings.json
 
 chmod 777 build/${PROJECT}/bin/*

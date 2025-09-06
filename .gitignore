@@ -1,1 +1,5 @@
 build
+# Ignore the VSCode settings file, as we generate this file automatically for each build
+# to match the current example build directory
+.vscode/settings.json
+

@@ -13,16 +13,7 @@
                 "ms-vscode.hexeditor",
                 "cschlosser.doxdocgen"
 
-            ],
-            "settings": {
-                "clangd.path": "/usr/bin/clangd",
-                "clangd.arguments": [
-                    "-background-index",
-                    "-compile-commands-dir=build"
-                    
-                ],
-                "C_Cpp.intelliSenseEngine": "disabled"
-            }
+            ]
         }
     },
     "remoteUser": "user",
